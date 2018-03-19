@@ -3403,7 +3403,7 @@ bool InitBlockIndex() {
         block.nTime    = 1521475309;// 1345084287;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
       //  block.nNonce   = 2179302059u;
-        block.nNonce = ByteReverse(36860305);//<zxb>
+        block.nNonce = ByteReverse(55792599);//<zxb>
         if (fTestNet)
         {
             block.nTime    = 1345090000;
@@ -3489,7 +3489,7 @@ bool InitBlockIndex() {
         printf("hashGenesisBlock_offical %s\n", hashGenesisBlock.ToString().c_str());
         printf("hashMerkleRoot %s\n", block.hashMerkleRoot.ToString().c_str());
         printf("block.nBits 2222222222222222222 zxb:%d \n" ,block.nBits);
-        assert(block.hashMerkleRoot == uint256("8a6b529b2f2b94632916911a15b1dcfb551b137f18ce84e0e07522c42f822e0fXX"));
+        assert(block.hashMerkleRoot == uint256("0x0a10a910f9b79e998b756d258a57e2d25b9bab2f183e3ab5a6051deb48be14a6"));
        // assert(block.hashMerkleRoot == uint256("0xece2718fca52c7c1c233fb9add9a7a4866794d8043fe75af407a9c59fa56cc79"));
         block.print();
         //assert(hash == hashGenesisBlock);
