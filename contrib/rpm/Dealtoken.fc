@@ -1,0 +1,8 @@
+/usr/bin/Dealtoken-cli		--	gen_context(system_u:object_r:Dealtoken_exec_t,s0)
+/usr/sbin/Dealtokend		--	gen_context(system_u:object_r:Dealtoken_exec_t,s0)
+/usr/lib(64)?/Dealtoken/Dealtokend		--	gen_context(system_u:object_r:Dealtoken_exec_t,s0)
+
+/etc/Dealtoken(/.*)?		gen_context(system_u:object_r:Dealtoken_conf_t,s0)
+/var/lib/Dealtoken(/.*)?		gen_context(system_u:object_r:Dealtoken_var_lib_t,s0)
+
+(/var)?/run/Dealtokend(/.*)?   gen_context(system_u:object_r:Dealtoken_var_run_t,s0)

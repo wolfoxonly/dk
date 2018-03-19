@@ -1,0 +1,6 @@
+usr/local/bin/Dealtoken-qt usr/bin
+share/pixmaps/Dealtoken32.xpm usr/share/pixmaps
+share/pixmaps/Dealtoken16.xpm usr/share/pixmaps
+share/pixmaps/Dealtoken128.png usr/share/pixmaps
+debian/Dealtoken-qt.desktop usr/share/applications
+debian/Dealtoken-qt.protocol usr/share/kde4/services/

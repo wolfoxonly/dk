@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Dealtoken Core
+Comment=Connect to the Dealtoken P2P Network
+Comment[de]=Verbinde mit dem Dealtoken peer-to-peer Netzwerk
+Comment[fr]=Dealtoken, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Dealtoken, eşten eşe kriptografik sanal para birimi
+Exec=Dealtoken-qt %u
+Terminal=false
+Type=Application
+Icon=Dealtoken128
+MimeType=x-scheme-handler/Dealtoken;
+Categories=Office;Finance;
+StartupWMClass=Dealtoken-qt
