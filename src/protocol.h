@@ -15,8 +15,8 @@
 #include <string>
 #include "uint256.h"
 
-#define PPCOIN_PORT  9909//zxb端口号
-#define RPC_PORT     9910
+#define PPCOIN_PORT  9929//zxb端口号
+#define RPC_PORT     9920
 #define TESTNET_PORT 9911
 #define TESTNET_RPC_PORT 9912
 
