@@ -11,8 +11,8 @@ export TRAVIS_REPO_SLUG="username/reponame"
 export TRAVIS_JOB_NUMBER=JobNo.1
 
 # Matrix
-#matrix="Win32Gui"
-matrix="Dealtokend"
+matrix="Win32Gui"
+#matrix="Dealtokend"
 #matrix="Cross-Mac"
 
 # For `matrix="Cross-Mac"'
