@@ -1286,13 +1286,13 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
                 }
 
                 // ppcoin: sub-cent change is moved to fee <zxb>
-                /*
+                
                 if (nChange > 0 && nChange < MIN_TXOUT_AMOUNT)
                 {
                     nFeeRet += nChange;
                     nChange = 0;
                 }
-*/
+
                 if (nChange > 0)
                 {
                     // coin control: send change to custom address
@@ -1320,11 +1320,12 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
                     CTxOut newTxOut(nChange, scriptChange);
 
                     // Never create dust outputs; if we would, just
-                    // add the dust to the fee.
+                    // add the dust to the fee.<zxb>
+                    
                     if (newTxOut.IsDust())
                     {
-                        nFeeRet += nChange;
-                        reservekey.ReturnKey();
+                       // nFeeRet += nChange;//<zxb>
+                        //reservekey.ReturnKey();
                     }
                     else
                     {
