@@ -1285,13 +1285,14 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
                     nFeeRet += nMoveToFee;
                 }
 
-                // ppcoin: sub-cent change is moved to fee
+                // ppcoin: sub-cent change is moved to fee <zxb>
+                /*
                 if (nChange > 0 && nChange < MIN_TXOUT_AMOUNT)
                 {
                     nFeeRet += nChange;
                     nChange = 0;
                 }
-
+*/
                 if (nChange > 0)
                 {
                     // coin control: send change to custom address
