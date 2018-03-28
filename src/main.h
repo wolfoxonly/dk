@@ -63,6 +63,7 @@ static const unsigned int MEMPOOL_HEIGHT = 0x7FFFFFFF;
 static const int64 MAX_MONEY = 99999999999 * COIN;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 static const int64 MIN_TX_FEE = 0.000005 *COIN;//zxb改最小转账限制
+static const int64 MAX_TX_FEE = 100 *COIN;//zxb改最小转账限制
 static const int64 MIN_RELAY_TX_FEE = 0.000005 *COIN;//改最小限制
 static const int64 MAX_MINT_PROOF_OF_WORK = 9999999999 * COIN;//最大挖到的利息值
 static const int64 MIN_TXOUT_AMOUNT = 0.000005 *COIN;//改最小限制
