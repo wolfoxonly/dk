@@ -38,7 +38,7 @@ using namespace std;
 using namespace boost;
 
 //Harry: set as many as you wish.
-static const int MAX_OUTBOUND_CONNECTIONS = 6;
+static const int MAX_OUTBOUND_CONNECTIONS = 32;
 
 bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOutbound = NULL, const char *strDest = NULL, bool fOneShot = false);
 
