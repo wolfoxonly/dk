@@ -11,9 +11,9 @@ export TRAVIS_REPO_SLUG="username/reponame"
 export TRAVIS_JOB_NUMBER=JobNo.1
 
 # Matrix
-matrix="Win32Gui"
+#matrix="Win32Gui"
 #matrix="Dealtokend"
-#matrix="Cross-Mac"
+matrix="Cross-Mac"
 
 # For `matrix="Cross-Mac"'
 # sudo pip install ez_setup
@@ -81,7 +81,7 @@ elif [ "$matrix" = "Win64Gui" ]; then
 elif [ "$matrix" = "Cross-Mac" ]; then
 	export HOST=x86_64-apple-darwin11
 	export PACKAGES="cmake imagemagick libcap-dev librsvg2-bin libz-dev libbz2-dev libtiff-tools python-dev python-pip"
-	export DEP_OPTS="NO_UPNP=1"
+	export DEP_OPTS=""
 	export OSX_SDK=10.11
 	export RUN_TESTS=false
 	export GOAL="deploy"
@@ -127,10 +127,6 @@ fi
 # before_script:
 unset CC; unset CXX
 
-if [ "$CHECK_DOC" = 1 ]; then 
-	contrib/devtools/check-doc.py; 
-fi
-
 mkdir -p depends/SDKs
 
 if [ -n "$OSX_SDK" -a ! -f depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.gz ]; then 
@@ -143,28 +139,7 @@ fi
 
 make $MAKEJOBS -C depends HOST=$HOST $DEP_OPTS
 
-# Start xvfb if needed, as documented at https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI
-if [ "$RUN_TESTS" = "true" -a "${DEP_OPTS#*NO_QT=1}" = "$DEP_OPTS" ]; then 
-	export DISPLAY=:99.0; 
-	/sbin/start-stop-daemon --start --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac; 
-fi
-
-
 #script:
-if [ "$CHECK_DOC" = 1 -a "$TRAVIS_REPO_SLUG" = "Dealtoken/Dealtoken" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then 
-	while read LINE; do 
-		travis_retry gpg --keyserver hkp://subset.pool.sks-keyservers.net --recv-keys $LINE; 
-	done < contrib/verify-commits/trusted-keys; 
-fi
-
-if [ "$CHECK_DOC" = 1 -a "$TRAVIS_REPO_SLUG" = "Dealtoken/Dealtoken" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then 
-	git fetch --unshallow; 
-fi
-
-if [ "$CHECK_DOC" = 1 -a "$TRAVIS_REPO_SLUG" = "Dealtoken/Dealtoken" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then 
-	contrib/verify-commits/verify-commits.sh; 
-fi
-
 export TRAVIS_COMMIT_LOG="$(git log --format=fuller -1)"
 
 if [ -n "$USE_SHELL" ]; then 
@@ -186,33 +161,9 @@ else
 	./autogen.sh
 fi
 
-#if [ -d build ]; then
-#	cd build
-#else
-#	mkdir build && cd build
-#fi
-
-#../configure --cache-file=config.cache $BITCOIN_CONFIG_ALL $BITCOIN_CONFIG || ( cat config.log && exit 1)
-
-#make distdir VERSION=$HOST
-
-#cd Dealtoken-$HOST
-
-#./configure --cache-file=../config.cache $BITCOIN_CONFIG_ALL $BITCOIN_CONFIG || ( cat config.log && exit 1)
-
 ./configure $BITCOIN_CONFIG_ALL $BITCOIN_CONFIG || ( cat config.log && exit 1)
 
 make $MAKEJOBS $GOAL || ( echo "Build failure. Verbose build follows." && make $GOAL V=1 ; exit 1 )
-
-#export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/depends/$HOST/lib
-
-#if [ "$RUN_TESTS" = "true" ]; then 
-#	make $MAKEJOBS check VERBOSE=1; 
-#fi
-
-#if [ "$RUN_TESTS" = "true" -a -f test/functional/test_runner.py ]; then 
-#	test/functional/test_runner.py --coverage; 
-#fi
 
 #after_script:
 echo $TRAVIS_COMMIT_RANGE
