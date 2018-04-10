@@ -1,5 +1,15 @@
 *.o
 src/qt/forms/*.h
+src/qt/moc_*.cpp
+rc/qt/locale/*.qm
+src/qt/locale/*.qm
+
+src/libDealtoken_cli.a
+src/libDealtoken_server.a
+src/libDealtoken_wallet.a
+src/qt/libDealtokenqt.a
+src/qt/qrc_Dealtoken.cpp
+
 Dealtoken-Qt.app/
 Makefile
 Makefile.in
