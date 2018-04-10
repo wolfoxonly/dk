@@ -10,6 +10,24 @@ src/libDealtoken_wallet.a
 src/qt/libDealtokenqt.a
 src/qt/qrc_Dealtoken.cpp
 
+dist/
+src/leveldb/.dirstamp
+src/leveldb/db/.deps/
+src/leveldb/db/.dirstamp
+src/leveldb/helpers/memenv/.deps/
+src/leveldb/helpers/memenv/.dirstamp
+src/leveldb/libleveldb.a
+src/leveldb/libmemenv.a
+src/leveldb/port/.deps/
+src/leveldb/port/.dirstamp
+src/leveldb/table/.deps/
+src/leveldb/table/.dirstamp
+src/leveldb/util/.deps/
+src/leveldb/util/.dirstamp
+src/libDealtoken_common.a
+src/obj/
+src/qt/Dealtoken-qt
+
 Dealtoken-Qt.app/
 Makefile
 Makefile.in
