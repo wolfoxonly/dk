@@ -10,6 +10,7 @@ src/libDealtoken_wallet.a
 src/qt/libDealtokenqt.a
 src/qt/qrc_Dealtoken.cpp
 
+Dealtoken.dmg
 dist/
 src/leveldb/.dirstamp
 src/leveldb/db/.deps/

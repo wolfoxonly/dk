@@ -390,6 +390,7 @@ public:
         }
     }
 };
+typedef CDealtokenAddress CBitcoinAddress;
 
 bool inline CDealtokenAddressVisitor::operator()(const CKeyID &id) const         { return addr->Set(id); }
 bool inline CDealtokenAddressVisitor::operator()(const CScriptID &id) const      { return addr->Set(id); }
