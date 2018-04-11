@@ -22,6 +22,7 @@ public:
     CBlockIndex *GetBestBlock();
     bool SetBestBlock(CBlockIndex *pindex);
     bool BatchWrite(const std::map<uint256, CCoins> &mapCoins, CBlockIndex *pindex);
+    bool GetUtxos(const std::string & address, std::map<COutPoint, CTxOut> & utxos);
     bool GetStats(CCoinsStats &stats);
 };
 

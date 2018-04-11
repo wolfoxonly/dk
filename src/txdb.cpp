@@ -6,6 +6,7 @@
 #include "txdb.h"
 #include "main.h"
 #include "hash.h"
+#include "base58.h"
 
 using namespace std;
 
@@ -109,6 +110,47 @@ bool CBlockTreeDB::ReadReindexing(bool &fReindexing) {
 
 bool CBlockTreeDB::ReadLastBlockFile(int &nFile) {
     return Read('l', nFile);
+}
+
+bool CCoinsViewDB::GetUtxos(const std::string & address, std::map<COutPoint, CTxOut> & maps) {
+    leveldb::Iterator *pcursor = db.NewIterator();
+    pcursor->SeekToFirst();
+
+    while (pcursor->Valid()) {
+        boost::this_thread::interruption_point();
+        try {
+            leveldb::Slice slKey = pcursor->key();
+            CDataStream ssKey(slKey.data(), slKey.data()+slKey.size(), SER_DISK, CLIENT_VERSION);
+            char chType;
+            ssKey >> chType;
+            if (chType == 'c') {
+                uint256 txhash; ssKey >> txhash;
+
+                leveldb::Slice slValue = pcursor->value();
+                CDataStream ssValue(slValue.data(), slValue.data()+slValue.size(), SER_DISK, CLIENT_VERSION);
+                CCoins coins; ssValue >> coins;
+
+                //VARINT(coins.nVersion);(coins.fCoinBase ? 'c' : 'n');VARINT(coins.nHeight);
+
+                for (unsigned int i=0; i<coins.vout.size(); i++) {
+                    const CTxOut &out = coins.vout[i];
+                    if (!out.IsNull()) {
+                        //i; out.nValue;
+                        CTxDestination dest;
+                        if (ExtractDestination(out.scriptPubKey, dest) && address == CBitcoinAddress(dest).ToString()){
+                            maps.insert(std::make_pair(COutPoint(txhash, i), out));
+                            //std::cout<<txhash.ToString()<<":"<<i<<":"<<out.nValue<<std::endl;
+                        }
+                    }
+                }
+            }
+            pcursor->Next();
+        } catch (std::exception &e) {
+            return error("%s() : deserialize error", __PRETTY_FUNCTION__);
+        }
+    }
+    delete pcursor;
+    return true;
 }
 
 bool CCoinsViewDB::GetStats(CCoinsStats &stats) {

@@ -2438,6 +2438,9 @@ public:
     virtual bool BatchWrite(const std::map<uint256, CCoins> &mapCoins, CBlockIndex *pindex);
 
     // Calculate statistics about the unspent transaction output set
+    virtual bool GetUtxos(const std::string & address, std::map<COutPoint, CTxOut> & maps);
+
+    // Calculate statistics about the unspent transaction output set
     virtual bool GetStats(CCoinsStats &stats);
 
     // As we use CCoinsViews polymorphically, have a virtual destructor
@@ -2459,6 +2462,7 @@ public:
     bool SetBestBlock(CBlockIndex *pindex);
     void SetBackend(CCoinsView &viewIn);
     bool BatchWrite(const std::map<uint256, CCoins> &mapCoins, CBlockIndex *pindex);
+    bool GetUtxos(const std::string & address, std::map<COutPoint, CTxOut> & maps);
     bool GetStats(CCoinsStats &stats);
 };
 
