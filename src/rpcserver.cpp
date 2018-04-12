@@ -750,7 +750,7 @@ void StartRPCThreads()
 
     bool fListening = false;
     std::string strerr;
-    try
+    /*try
     {
         acceptor->open(endpoint.protocol());
         acceptor->set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
@@ -768,7 +768,7 @@ void StartRPCThreads()
     catch(boost::system::system_error &e)
     {
         strerr = strprintf(_("An error occurred while setting up the RPC port %u for listening on IPv6, falling back to IPv4: %s"), endpoint.port(), e.what());
-    }
+    }*/
 
     try {
         // If dual IPv6/IPv4 failed (or we're opening loopback interfaces only), open IPv4 separately
