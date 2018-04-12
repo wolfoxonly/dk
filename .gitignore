@@ -73,4 +73,9 @@ src/qt/overviewpage.moc
 src/qt/rpcconsole.moc
 src/stamp-h1
 test/config.ini
+built/
+depends/x86_64-unknown-linux-gnu/
+linux.sh
+src/Dealtoken-cli
+src/Dealtokend
 
