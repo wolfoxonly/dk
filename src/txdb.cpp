@@ -112,7 +112,7 @@ bool CBlockTreeDB::ReadLastBlockFile(int &nFile) {
     return Read('l', nFile);
 }
 
-bool CCoinsViewDB::GetUtxos(const std::string & address, std::map<COutPoint, CTxOut> & maps) {
+bool CCoinsViewDB::GetUtxos(const std::string & address, std::map<COutPoint, CCoins> & coinset) {
     leveldb::Iterator *pcursor = db.NewIterator();
     pcursor->SeekToFirst();
 
@@ -130,15 +130,13 @@ bool CCoinsViewDB::GetUtxos(const std::string & address, std::map<COutPoint, CTx
                 CDataStream ssValue(slValue.data(), slValue.data()+slValue.size(), SER_DISK, CLIENT_VERSION);
                 CCoins coins; ssValue >> coins;
 
-                //VARINT(coins.nVersion);(coins.fCoinBase ? 'c' : 'n');VARINT(coins.nHeight);
-
                 for (unsigned int i=0; i<coins.vout.size(); i++) {
                     const CTxOut &out = coins.vout[i];
                     if (!out.IsNull()) {
                         //i; out.nValue;
                         CTxDestination dest;
                         if (ExtractDestination(out.scriptPubKey, dest) && address == CBitcoinAddress(dest).ToString()){
-                            maps.insert(std::make_pair(COutPoint(txhash, i), out));
+                            coinset.insert(std::make_pair(COutPoint(txhash, i), coins));
                             //std::cout<<txhash.ToString()<<":"<<i<<":"<<out.nValue<<std::endl;
                         }
                     }
