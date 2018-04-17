@@ -221,7 +221,7 @@ Value getutxos(const Array& params, bool fHelp)
             entry.push_back(Pair("coinstake", val.fCoinStake));
             entry.push_back(Pair("coinbase", (int)val.nTime));
             entry.push_back(Pair("coinbase", (int)val.nVersion));
-            entry.push_back(Pair("amout", ValueFromAmount(coin.nValue)));
+            entry.push_back(Pair("amount", ValueFromAmount(coin.nValue)));
             entry.push_back(Pair("scriptPubKey", (coin.scriptPubKey.ToString())));
             ret.push_back(entry);
         }
