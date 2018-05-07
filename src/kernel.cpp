@@ -11,13 +11,13 @@
 using namespace std;
 
 // Protocol switch time of v0.3 kernel protocol
-unsigned int nProtocolV03SwitchTime     = 1532136755;// 1363800000;<zxb>
+unsigned int nProtocolV03SwitchTime     = 1532136755;// 1363800000;<coingo.vip>
 unsigned int nProtocolV03TestSwitchTime = 1359781000;
 // Protocol switch time of v0.4 kernel protocol
-unsigned int nProtocolV04SwitchTime     = 1537493555;//1399300000;<zxb>
+unsigned int nProtocolV04SwitchTime     = 1537493555;//1399300000;<coingo.vip>
 unsigned int nProtocolV04TestSwitchTime = 1395700000;
 // Protocol switch time of v0.5 kernel protocol
-unsigned int nProtocolV05SwitchTime     = 1650504755;// 1461700000;<zxb>
+unsigned int nProtocolV05SwitchTime     = 1650504755;// 1461700000;<coingo.vip>
 unsigned int nProtocolV05TestSwitchTime = 1447700000;
 // Protocol switch time of v0.6 kernel protocol
 // supermajority hardfork: actual fork will happen later than switch time
@@ -535,7 +535,7 @@ unsigned int GetStakeModifierChecksum(const CBlockIndex* pindex)
 bool CheckStakeModifierCheckpoints(int nHeight, unsigned int nStakeModifierChecksum)
 {
     if (fTestNet) return true; // Testnet has no checkpoints
-  //  printf("nStakeModifierChecksum==%d CheckStakeModifierCheckpoints() mapStakeModifierCheckpoints.count(nHeight) === %d\n",nStakeModifierChecksum, mapStakeModifierCheckpoints.count(nHeight));//zxb 除掉无关打印
+  //  printf("nStakeModifierChecksum==%d CheckStakeModifierCheckpoints() mapStakeModifierCheckpoints.count(nHeight) === %d\n",nStakeModifierChecksum, mapStakeModifierCheckpoints.count(nHeight));//coingo.vip 除掉无关打印
     if (mapStakeModifierCheckpoints.count(nHeight))
         return nStakeModifierChecksum == mapStakeModifierCheckpoints[nHeight];
     return true;

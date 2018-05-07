@@ -90,7 +90,7 @@ Value addnode(const Array& params, bool fHelp)
     if (strCommand == "onetry")
 		
     {
-        printf("LJN just one try rpcnet.cpp 93");//zxb ljn
+        printf("LJN just one try rpcnet.cpp 93");//coingo.vip ljn
         CAddress addr;
         ConnectNode(addr, strNode.c_str());
         return Value::null;

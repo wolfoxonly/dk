@@ -349,7 +349,7 @@ bool GetMyExternalIP2(const CService& addrConnect, const char* pszGet, const cha
     return error("GetMyExternalIP() : connection closed");
 }
 
-bool GetMyExternalIP(CNetAddr& ipRet)//<zxb>
+bool GetMyExternalIP(CNetAddr& ipRet)//<coingo.vip>
 {
     CService addrConnect;
     const char* pszGet;
@@ -437,11 +437,11 @@ CNode* FindNode(const CService& addr)
 CNode* ConnectNode(CAddress addrConnect, const char *pszDest)
 {
     printf("trying connection %s before judgement",
-        pszDest ? pszDest : addrConnect.ToString().c_str());//zxb,ljn校验节点
+        pszDest ? pszDest : addrConnect.ToString().c_str());//coingo.vip,ljn校验节点
     if (pszDest == NULL) {
         if (IsLocal(addrConnect))
         	{
-			printf("IsLocal(addrConnect) judge fail");//zxb,ljn
+			printf("IsLocal(addrConnect) judge fail");//coingo.vip,ljn
             return NULL;
         	}
 
@@ -456,7 +456,7 @@ CNode* ConnectNode(CAddress addrConnect, const char *pszDest)
 
 
     /// debug print
-    printf("trying connection %s lastseen=%.1fhrs\n",//zxb,ljn校验节点
+    printf("trying connection %s lastseen=%.1fhrs\n",//coingo.vip,ljn校验节点
         pszDest ? pszDest : addrConnect.ToString().c_str(),
         pszDest ? 0 : (double)(GetAdjustedTime() - addrConnect.nTime)/3600.0);
 
@@ -1181,7 +1181,7 @@ void MapPort(bool)
 // Each pair gives a source name and a seed name.
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
-//zxb默认节点
+//coingo.vip默认节点
 static const char *strMainNetDNSSeed[][2] = {
 
 		{"www.dk.yb.ink","182.61.114.149"},

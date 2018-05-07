@@ -34,7 +34,7 @@ QString DealtokenUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("DK");//zxb定义名字
+    case BTC: return QString("DK");//coingo.vip定义名字
     case mBTC: return QString("mDK");
     case uBTC: return QString::fromUtf8("μDK");
     default: return QString("???");

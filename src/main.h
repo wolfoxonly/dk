@@ -59,11 +59,11 @@ static const unsigned int UNDOFILE_CHUNK_SIZE = 0x100000; // 1 MiB
 /** Fake height value used in CCoins to signify they are only in the memory pool (since 0.8) */
 static const unsigned int MEMPOOL_HEIGHT = 0x7FFFFFFF;
 /** No amount larger than this (in satoshi) is valid */
-// static const int64 MAX_MONEY = 2000000000 * COIN;<zxb>
+// static const int64 MAX_MONEY = 2000000000 * COIN;<coingo.vip>
 static const int64 MAX_MONEY = 99999999999 * COIN;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
-static const int64 MIN_TX_FEE = 0.000005 *COIN;//zxb改最小转账限制
-static const int64 MAX_TX_FEE = 100 *COIN;//zxb改最小转账限制
+static const int64 MIN_TX_FEE = 0.000005 *COIN;//coingo.vip改最小转账限制
+static const int64 MAX_TX_FEE = 100 *COIN;//coingo.vip改最小转账限制
 static const int64 MIN_RELAY_TX_FEE = 0.000005 *COIN;//改最小限制
 static const int64 MAX_MINT_PROOF_OF_WORK = 9999999999 * COIN;//最大挖到的利息值
 static const int64 MIN_TXOUT_AMOUNT = 0.000005 *COIN;//改最小限制
@@ -71,9 +71,9 @@ static const int64 MIN_TXOUT_AMOUNT = 0.000005 *COIN;//改最小限制
 static const int COINBASE_MATURITY_PPC = 500;
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const int STAKE_TARGET_SPACING = 2 * 60;//改为2分钟了 10 * 60; // 10-minute block spacing 
-static const int STAKE_MIN_AGE = 60 * 60 * 24 * 14; // minimum age for coin age<zxb>
+static const int STAKE_MIN_AGE = 60 * 60 * 24 * 14; // minimum age for coin age<coingo.vip>
 // static const int STAKE_MAX_AGE = 60 * 60 * 24 * 90; // stake age of full weight
-static const int STAKE_MAX_AGE = 60 * 60 * 24 * 365 * 4; // stake age of full weight 3年 <zxb>
+static const int STAKE_MAX_AGE = 60 * 60 * 24 * 365 * 4; // stake age of full weight 3年 <coingo.vip>
 /** Maximum number of script-checking threads allowed */
 static const int MAX_SCRIPTCHECK_THREADS = 16;
 #ifdef USE_UPNP

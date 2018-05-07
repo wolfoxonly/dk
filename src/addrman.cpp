@@ -302,9 +302,9 @@ void CAddrMan::Good_(const CService &addr, int64 nTime)
 
     // if no bucket is found, something bad happened;
     // TODO: maybe re-add the node, but for now, just bail out
-   // if (nUBucket == -1) return;//zxb,ljn
+   // if (nUBucket == -1) return;//coingo.vip,ljn
 
-    printf("Moving %s to tried\n", addr.ToString().c_str());//zxb,此处校验节点
+    printf("Moving %s to tried\n", addr.ToString().c_str());//coingo.vip,此处校验节点
 
     // move nId to the tried tables
     MakeTried(info, nId, nUBucket);

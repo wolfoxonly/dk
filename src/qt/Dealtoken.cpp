@@ -100,8 +100,8 @@ static bool ThreadSafeAskFee(int64 nFeeRequired)
 {
     if(!guiref)
         return false;
-    //if(nFeeRequired < CTransaction::nMinTxFee || nFeeRequired <= nTransactionFee || fDaemon)//ZXB
-    if(nFeeRequired < CTransaction::nMinTxFee || nFeeRequired <= nTransactionFee || nFeeRequired >= MAX_TX_FEE || fDaemon)//ZXB
+    //if(nFeeRequired < CTransaction::nMinTxFee || nFeeRequired <= nTransactionFee || fDaemon)//coingo.vip
+    if(nFeeRequired < CTransaction::nMinTxFee || nFeeRequired <= nTransactionFee || nFeeRequired >= MAX_TX_FEE || fDaemon)//coingo.vip
         return true;
 
     bool payFee = false;
