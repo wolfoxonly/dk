@@ -424,7 +424,7 @@ public:
     }
 
     // Add multiple addresses.
-    bool Add(const std::vector<CAddress> &vAddr, const CNetAddr& source, int64 nTimePenalty = 0)//<zxb>决定是否加成功
+    bool Add(const std::vector<CAddress> &vAddr, const CNetAddr& source, int64 nTimePenalty = 0)//<coingo.vip>决定是否加成功
     {
         int nAdd = 0;
         {
